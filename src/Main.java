@@ -10,7 +10,7 @@ public class Main
        {
         Scanner in = new Scanner (System.in);//Creates scanner object.
         Scanner in2 = new Scanner (System.in);//Creates a second scanner object.
-        //abcasdjfioasdjf
+        //abcasdjfioasdjfe
         System.out.println("Bot says hi, user says:");
         String userResp = in.nextLine(); //in.nextLine() uses the scanner object to get the user's responnse as a String
         System.out.println(userResp);
