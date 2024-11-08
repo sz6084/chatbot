@@ -15,10 +15,34 @@ public class Main
        {
         Scanner in = new Scanner (System.in);//Creates scanner object.
         //Scanner in2 = new Scanner (System.in);//Creates a second scanner object.
-        System.out.println("Bot says hi, user says:");
-        String userResp = in.nextLine(); //in.nextLine() uses the scanner object to get the user's responnse as a String
+        System.out.println(greet[(int)(Math.random() * 2)]);
+        String userResp = in.nextLine().toLowerCase(); //in.nextLine() uses the scanner object to get the user's responnse as a String
         // System.out.println(userResp);
-        
+        int food = firstMenuCheck(userResp);
+        if(food==-1) {
+                getRandomResponse();
+        } else {
+                System.out.print("Sure! We offer a variety of " +keywords[food]+ ", including our top choices: ");
+                if(keywords[food].equals("ramen")) {
+                        for (String item:ramenTypes) { // display out method
+                                System.out.print(item+", ");
+                        }
+                } else if (keywords[food].equals("bbq")) {
+                        for (String item:bbqs) {
+                                System.out.print(item+", ");
+                        }
+                } else if (keywords[food].equals("appetizers")) {
+                        for (String item:ramenTypes) {
+                                System.out.print(item+", ");
+                        }
+                }
+                // options to q to prev menu or 
+                System.out.println("Would you like to order one of these? If not, type 'q' to quit out of this chat.");
+                userResp = in.nextLine().toLowerCase();
+                // restart by calling main if invalid input?
+        }
+        in.close();
+            System.out.println(goodBye[(int)(Math.random() * 3)]);
 
         //You will need to make sure your chatbot continues looping until it sees certain keywords from the user such as "bye","goodbye"...
         // do you need a while loop or a for loop?
@@ -57,5 +81,14 @@ public class Main
                  }
                  return response;
          }
+         public static int firstMenuCheck(String in){
+                int menuCounter = -1;
+                for (int i = 0; i < keywords.length; i++) {
+                        if (in.contains(keywords[i])) {
+                                menuCounter = i;
+                        }
+                }
+                return menuCounter;
+        }
 
 }
