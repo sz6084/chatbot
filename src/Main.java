@@ -3,26 +3,25 @@ import java.util.Scanner;
 public class Main {
     static String[] greet = { "Hello! Welcome to Ramen101!", "Salutations good customer! Welcome to Ramen101." };
     // CREATE INSTANCE VARIABLES HERE. Ensure they are static.
-    static String[] goodBye = { "bye", "see you later!", "good doing business with you" };
+    static String[] goodBye = {"Goodbye!", "See you later!", "Good doing business with you!", "Thanks for stopping by!", "Enjoy the rest of your day!"};
+    static String[] randomResponse = {"I'm sorry, I didn't get that. ", "Pardon me, what did you say? ", "Sorry, could you repeat that? ", "Excuse me, could you clarify your response and try again? ", "I didn't quite get that, could you try again? "};
     static String[] keywords = { "ramen", "bbq", "appetizers" }; // validate input for BBQ if barbecue typed
     static Ramen[] ramenTypes = { new Ramen("tonkotsu",16), new Ramen("miso", 16), new Ramen("seafood", 19), new Ramen("black garlic", 16), new Ramen("chicken", 16), new Ramen("veggie","veggy","vegetable", 16)};
     static BBQ[] bbqs = { new BBQ("chicken katsu",15), new BBQ("teriyaki chicken", 15), new BBQ("hawaiian bbq chicken",15), new BBQ("hawaiian bbq beef",16),
             new BBQ("hawaiian bbq short rib", 17), new BBQ("bbq chicken and beef",17), new BBQ("bbq chicken and chicken katsu",17), new BBQ("hawaiian bbq trio",19) };
-    static String[] appetizers = { "chicken kara-age", "grill whole squid", "gyoza", "agedashi tofu", "takoyaki",
-            "prawn tempura", "vegetable tempura", "kaki fry", "geso fry", "spam musubi", "lumpia", "crab rangoons",
-            "edamame", "spicy cucumber salad", "white rice" };
+    static Appetizer[] appetizers = { new Appetizer("chicken kara-age", 11), new Appetizer("grill whole squid", 11), new Appetizer("gyoza", 8), new Appetizer("gedashi tofu", 8), new Appetizer("takoyaki", 10), new Appetizer("prawn tempura", 10), new Appetizer("vegetable tempura", 10), new Appetizer("kaki fry", 9), new Appetizer("geso fry", 10), new Appetizer("spam musubi", 8), new Appetizer("lumpia", 8), new Appetizer("crab rangoons",8), new Appetizer("edamame", 8), new Appetizer("spicy cucumber salad", 8), new Appetizer("white rice", 3) };
     // bbq parsing
     // parse input by lowering case
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in); // Creates scanner object.
-        System.out.println(greet[(int) (Math.random() * 2)]+" What would you like to order?");
+        System.out.println(greet[(int) (Math.random() * 2)]+" What would you like to order? We have three main categoreies on our menu: ramen, barbeque, and appetizers. Please let me know if you are interested in any of them!");
         String userResp = in.nextLine().toLowerCase(); // in.nextLine() uses the scanner object to get the user's
                                                        // response as a String
         checkForQuit(userResp); // fix goodbye dialog repeating bug
         int food = firstMenuCheck(userResp);
         if (food == -1) {
-            getRandomResponse();
+            System.out.println(getRandomResponse());
         } else {
             System.out.print("Sure! We offer a variety of " + keywords[food] + ", including our top choices: ");
             if (keywords[food].equals("ramen")) {
@@ -34,7 +33,7 @@ public class Main {
                     System.out.print(item.getName() + ", ");
                 }
             } else if (keywords[food].equals("appetizers")) {
-                for (Ramen item : ramenTypes) {
+                for (Appetizer item : appetizers) {
                     System.out.print(item.getName() + ", ");
                 }
             }
@@ -42,57 +41,75 @@ public class Main {
             System.out.println("Would you like to order one of these? If not, type 'q' to quit out of this chat.");
             userResp = in.nextLine().toLowerCase();
             checkForQuit(userResp);
-            int ramenIndex = -1;
-            int bbqIndex = -1;
-            int appetizerIndex = -1;
+            int foodIndex = -1;
             
             if (food==0) {
                 for (int i=0;i<ramenTypes.length;i++) {
                     if (userResp.contains(ramenTypes[i].getName())) {
-                        ramenIndex = i;
+                        foodIndex = i;
                     }
                 }
+                if (foodIndex != -1){
+                System.out.printf("You placed an order for %s which is $%.2f%n",ramenTypes[foodIndex].getName(),ramenTypes[foodIndex].getPrice()); // printf
+                System.out.println("Type yes to confirm your order, and type no to quit to the main menu: ");
+                userResp = in.next().toLowerCase();
+                if(userResp.equals("yes")) {
+                    System.out.println("Your order has been placed, enjoy! 🍜");
+                } else if (userResp.equals("no")) {
+                    main(greet);
+                }
+                else {
+                    System.out.println(getRandomResponse());
+                }
+              }
             } else if(food==1) {
                 for (int i=0;i<bbqs.length;i++) {
                     if (userResp.contains(bbqs[i].getName())) {
-                        bbqIndex = i;
+                        foodIndex = i;
                     }
                 }
-            } else if(food==2) {
-                for (int i=0;i<appetizers.length;i++) {
-                    if (userResp.contains(appetizeres[i].getName())) { // have not finished making appetizers class
-                        appetizerIndex = i;
-                    }
+                if (foodIndex != -1){
+                System.out.printf("You placed an order for %s which is $%.2f%n",bbqs[foodIndex].getName(),bbqs[foodIndex].getPrice()); // printf
+                System.out.println("Type yes to confirm your order, and type no to quit out of this conversation: ");
+                userResp = in.next().toLowerCase();
+                if(userResp.equals("yes")) {
+                    System.out.println("Your order has been placed, enjoy! 🥩");
+                } else if (userResp.equals("no")) {
+                    main(greet);
+                }
+                else {
+                    System.out.println(getRandomResponse());
                 }
             }
-            System.out.printf("You placed an order for %s which is $%.2f%n",ramenTypes[ramenIndex].getName(),ramenTypes[ramenIndex].getPrice()); // printf
-            System.out.println("Type yes to confirm your order, and type no to quit: ");
-            userResp = in.next().toLowerCase();
-            if(userResp.equals("yes")) {
-                System.out.println("Your order has been placed, enjoy! 🍜");
-            } else {
-                System.exit(69);
+            } else if(food==2) {
+                for (int i=0;i<appetizers.length;i++) {
+                    if (userResp.contains(appetizers[i].getName())) {
+                        foodIndex = i;
+                    }
+                }
+                System.out.printf("You placed an order for %s which is $%.2f%n",appetizers[foodIndex].getName(),appetizers[foodIndex].getPrice()); // printf
+                System.out.println("Type yes to confirm your order, and type no to quit: ");
+                userResp = in.next().toLowerCase();
+                if(userResp.equals("yes")) {
+                    System.out.println("Your order has been placed, enjoy! 🍜");
+                } else if (userResp.equals("no")) {
+                    main(greet);
+                }
+                else {
+                    System.out.println(getRandomResponse());
+                }
+            }
+            else if (foodIndex == -1){
+                System.out.println(getRandomResponse());
             }
         }
         in.close();
         System.out.println(goodBye[(int) (Math.random() * 3)]);
 
-        // You will need to make sure your chatbot continues looping until it sees
-        // certain keywords from the user such as "bye","goodbye"...
-        // do you need a while loop or a for loop?
-
-        // Consider: How do I check what the user says and compare it to my keywords?
-        // What methods do I have?
 
     }
-
-    // Create other methods that might be helpful down here.
-    // For example a method called checkWord where the user traverses through an
-    // array to check if a word matches.
-
-    // One method you might need is getRandomResponse()
     public static String getRandomResponse() {
-        return "";
+        return randomResponse[(int) (Math.random() * 5)];
     }
     // It'll generate a random response when the chatbot doesn't understand what to
     // say
@@ -125,7 +142,7 @@ public class Main {
 
     public static void checkForQuit(String n) {
         if (n.equals("q")) {
-            main(appetizers);
+            main(greet);
         }
     }
 
