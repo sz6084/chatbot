@@ -16,13 +16,20 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in); // Creates scanner object.
         System.out.println(greet[(int) (Math.random() * 2)]+" What would you like to order? We have three main categoreies on our menu: ramen, barbeque, and appetizers. Please let me know if you are interested in any of them!");
-        String userResp = in.nextLine().toLowerCase(); // in.nextLine() uses the scanner object to get the user's
+        int food =-1;
+        String userResp = "";
+        while(food==-1) {
+            userResp = in.nextLine().toLowerCase(); // in.nextLine() uses the scanner object to get the user's
                                                        // response as a String
-        checkForQuit(userResp); // fix goodbye dialog repeating bug
-        int food = firstMenuCheck(userResp);
-        if (food == -1) {
+            if (userResp.equals("q")) {
+                System.out.println(goodBye[(int) (Math.random() * 3)]);
+                System.exit(69);
+            }
+            food = firstMenuCheck(userResp);
+            if (food!=-1) break;
             System.out.println(getRandomResponse());
-        } else {
+        }
+        if (food != -1) {
             System.out.print("Sure! We offer a variety of " + keywords[food] + ", including our top choices: ");
             if (keywords[food].equals("ramen")) {
                 for (Ramen item : ramenTypes) { // display out method
