@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in); // Creates scanner object.
-        System.out.println(greet[(int) (Math.random() * 2)]+ " What would you like to order? We have three main categoreies on our menu: ramen, barbeque, and appetizers. Please let me know if you are interested in any of them! If you would like to quit out of this chat, please type 'q'.");
+        System.out.println(greet[(int) (Math.random() * 2)]+ " What would you like to order? We have three main categories on our menu: ramen, barbeque, and appetizers. Please let me know if you are interested in any of them! If you would like to quit out of this chat, please type 'q'.");
         int food = -1;
         String userResp = "";
         while(food==-1) {
@@ -45,7 +45,7 @@ public class Main {
                 }
             }
 
-            System.out.println("Would you like to order one of these? If not, type 'q' to quit out of this chat.");
+            System.out.println("Would you like to order one of these? If not, type 'q' to go back to the main menu.");
             int foodIndex = -1;
             if (food==0) {
                 while (foodIndex == -1) {
