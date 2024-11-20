@@ -44,43 +44,71 @@ public class Main {
                     System.out.print(item.getName() + ", ");
                 }
             }
-            // options to q to prev menu or
+
             System.out.println("Would you like to order one of these? If not, type 'q' to quit out of this chat.");
-            userResp = in.nextLine().toLowerCase();
-            checkForQuit(userResp);
             int foodIndex = -1;
-            
             if (food==0) {
+                while (foodIndex == -1) {
+                userResp = in.nextLine().toLowerCase();
+                checkForQuit(userResp);
                 for (int i=0;i<ramenTypes.length;i++) {
                     if (userResp.contains(ramenTypes[i].getName())) {
                         foodIndex = i;
                     }
                 }
-                if (foodIndex != -1){
-                System.out.printf("You placed an order for %s which is $%.2f%n",ramenTypes[foodIndex].getName(),ramenTypes[foodIndex].getPrice()); // printf
+                if (foodIndex != -1) {
+                    break;
+                }
+                System.out.println(getRandomResponse());
+            }
+            String spiceCheck = "-1";
+            System.out.println("How spicy would you like your " + ramenTypes[foodIndex].getName() + " ramen to be? Please enter an integer from 0 to 4 inclusive, with 0 being no spice and 4 being extra spicy. If you would like to exit to the main menu, please type 'q'.");
+            while (spiceCheck.equals("-1")) {
+                userResp = in.nextLine().toLowerCase(); 
+                if (userResp.equals("q")) {
+                    main(greet);
+                }
+                if (userResp.contains("0") || userResp.contains("1") || userResp.contains("2") || userResp.contains("3") || userResp.contains("4")) {
+                    spiceCheck = userResp;
+                    break;
+                }
+                System.out.println(getRandomResponse());
+            }
+                System.out.printf("You placed an order for %s with spice level %s which is $%.2f%n",ramenTypes[foodIndex].getName(), spiceCheck, ramenTypes[foodIndex].getPrice()); // printf
                 System.out.println("Type yes to confirm your order, and type no to quit to the main menu: ");
+                while (!(userResp.equals("yes") && userResp.equals("no"))) {
                 userResp = in.next().toLowerCase();
-                if(userResp.equals("yes")) {
+                if (userResp.equals("yes")) {
                     System.out.println("Your order has been placed, enjoy! 🍜");
+                    break;
                 } else if (userResp.equals("no")) {
                     main(greet);
                 }
                 else {
                     System.out.println(getRandomResponse());
                 }
-              }
+            }
             } else if(food==1) {
-                for (int i=0;i<bbqs.length;i++) {
-                    if (userResp.contains(bbqs[i].getName())) {
-                        foodIndex = i;
+                while (foodIndex == -1) {
+                    userResp = in.nextLine().toLowerCase();
+                    checkForQuit(userResp);
+                    for (int i=0;i<bbqs.length;i++) {
+                        if (userResp.contains(bbqs[i].getName())) {
+                            foodIndex = i;
+                        }
                     }
+                    if (foodIndex != -1) {
+                        break;
+                    }
+                    System.out.println(getRandomResponse());
                 }
-                if (foodIndex != -1){
                 System.out.printf("You placed an order for %s which is $%.2f%n",bbqs[foodIndex].getName(),bbqs[foodIndex].getPrice()); // printf
                 System.out.println("Type yes to confirm your order, and type no to quit out of this conversation: ");
+                while (!(userResp.equals("yes") && userResp.equals("no"))) {
                 userResp = in.next().toLowerCase();
                 if(userResp.equals("yes")) {
                     System.out.println("Your order has been placed, enjoy! 🥩");
+                    break;
                 } else if (userResp.equals("no")) {
                     main(greet);
                 }
@@ -89,16 +117,26 @@ public class Main {
                 }
             }
             } else if(food==2) {
-                for (int i=0;i<appetizers.length;i++) {
-                    if (userResp.contains(appetizers[i].getName())) {
-                        foodIndex = i;
+                while (foodIndex == -1) {
+                    userResp = in.nextLine().toLowerCase();
+                    checkForQuit(userResp);
+                    for (int i=0;i<appetizers.length;i++) {
+                        if (userResp.contains(appetizers[i].getName())) {
+                            foodIndex = i;
+                        }
                     }
+                    if (foodIndex != -1) {
+                        break;
+                    }
+                    System.out.println(getRandomResponse());
                 }
                 System.out.printf("You placed an order for %s which is $%.2f%n",appetizers[foodIndex].getName(),appetizers[foodIndex].getPrice()); // printf
                 System.out.println("Type yes to confirm your order, and type no to quit: ");
+                while (!(userResp.equals("yes") && userResp.equals("no"))) {
                 userResp = in.next().toLowerCase();
                 if(userResp.equals("yes")) {
-                    System.out.println("Your order has been placed, enjoy! 🍜");
+                    System.out.println("Your order has been placed, enjoy! 🍽️");
+                     break;
                 } else if (userResp.equals("no")) {
                     main(greet);
                 }
@@ -106,6 +144,7 @@ public class Main {
                     System.out.println(getRandomResponse());
                 }
             }
+        }
             else if (foodIndex == -1){
                 System.out.println(getRandomResponse());
             }
