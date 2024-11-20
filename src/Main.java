@@ -15,8 +15,8 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in); // Creates scanner object.
-        System.out.println(greet[(int) (Math.random() * 2)]+" What would you like to order? We have three main categoreies on our menu: ramen, barbeque, and appetizers. Please let me know if you are interested in any of them!");
-        int food =-1;
+        System.out.println(greet[(int) (Math.random() * 2)]+ " What would you like to order? We have three main categoreies on our menu: ramen, barbeque, and appetizers. Please let me know if you are interested in any of them! If you would like to quit out of this chat, please type 'q'.");
+        int food = -1;
         String userResp = "";
         while(food==-1) {
             userResp = in.nextLine().toLowerCase(); // in.nextLine() uses the scanner object to get the user's
@@ -27,7 +27,7 @@ public class Main {
             }
             food = firstMenuCheck(userResp);
             if (food!=-1) break;
-            System.out.println(getRandomResponse());
+            System.out.println(getRandomResponse() + "You can ask me about any of our three categories on our menu: Ramen, barbeque, and appetizers.");
         }
         if (food != -1) {
             System.out.print("Sure! We offer a variety of " + keywords[food] + ", including our top choices: ");
@@ -59,7 +59,12 @@ public class Main {
                 if (foodIndex != -1) {
                     break;
                 }
-                System.out.println(getRandomResponse());
+                System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                    for (Ramen item : ramenTypes) { // display out method
+                        System.out.print(item.getName() + ", ");
+                    }
+
+                
             }
             String spiceCheck = "-1";
             System.out.println("How spicy would you like your " + ramenTypes[foodIndex].getName() + " ramen to be? Please enter an integer from 0 to 4 inclusive, with 0 being no spice and 4 being extra spicy. If you would like to exit to the main menu, please type 'q'.");
@@ -85,7 +90,7 @@ public class Main {
                     main(greet);
                 }
                 else {
-                    System.out.println(getRandomResponse());
+                    System.out.println(getRandomResponse() + "If you would like to confirm your order, please type 'yes'. To return back into the main menu, please type 'no'.");
                 }
             }
             } else if(food==1) {
@@ -100,10 +105,13 @@ public class Main {
                     if (foodIndex != -1) {
                         break;
                     }
-                    System.out.println(getRandomResponse());
+                    System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                        for (BBQ item : bbqs) {
+                            System.out.print(item.getName() + ", ");
+                        }
                 }
                 System.out.printf("You placed an order for %s which is $%.2f%n",bbqs[foodIndex].getName(),bbqs[foodIndex].getPrice()); // printf
-                System.out.println("Type yes to confirm your order, and type no to quit out of this conversation: ");
+                System.out.println("Type yes to confirm your order, and type no to quit to the main menu: ");
                 while (!(userResp.equals("yes") && userResp.equals("no"))) {
                 userResp = in.next().toLowerCase();
                 if(userResp.equals("yes")) {
@@ -128,10 +136,13 @@ public class Main {
                     if (foodIndex != -1) {
                         break;
                     }
-                    System.out.println(getRandomResponse());
+                    System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                        for (Appetizer item : appetizers) {
+                            System.out.print(item.getName() + ", ");
+                        }
                 }
                 System.out.printf("You placed an order for %s which is $%.2f%n",appetizers[foodIndex].getName(),appetizers[foodIndex].getPrice()); // printf
-                System.out.println("Type yes to confirm your order, and type no to quit: ");
+                System.out.println("Type yes to confirm your order, and type no to quit to the main menu: ");
                 while (!(userResp.equals("yes") && userResp.equals("no"))) {
                 userResp = in.next().toLowerCase();
                 if(userResp.equals("yes")) {
@@ -149,10 +160,8 @@ public class Main {
                 System.out.println(getRandomResponse());
             }
         }
-        in.close();
         System.out.println(goodBye[(int) (Math.random() * 3)]);
-
-
+        in.close();
     }
     public static String getRandomResponse() {
         return randomResponse[(int) (Math.random() * 5)];
