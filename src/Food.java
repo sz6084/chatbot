@@ -25,6 +25,10 @@ public class Food {
         this.toppings = toppings;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public String getName() {
         return name;
     }

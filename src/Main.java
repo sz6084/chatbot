@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Main {
-    static String[] greet = { "Hello! Welcome to Ramen101!", "Salutations good customer! Welcome to Ramen101." };
     // CREATE INSTANCE VARIABLES HERE. Ensure they are static.
+    static String[] greet = { "Hello! Welcome to Ramen101!", "Salutations good customer! Welcome to Ramen101." };
     static String[] goodBye = {"Goodbye!", "See you later!", "Good doing business with you!", "Thanks for stopping by!", "Enjoy the rest of your day!"};
     static String[] randomResponse = {"I'm sorry, I didn't get that. ", "Pardon me, what did you say? ", "Sorry, could you repeat that? ", "Excuse me, could you clarify your response and try again? ", "I didn't quite get that, could you try again? "};
     static String[] keywords = { "ramen", "bbq", "appetizers" }; // validate input for BBQ if barbecue typed
@@ -192,25 +192,23 @@ public class Main {
                 System.out.println("Which food are you interested in, ramen, barbecue, or appetizers?");
                 userResp = in.next().toLowerCase();
                 if (userResp.contains("ramen")) {
-                    System.out.println("Choose 1-4");
+                    System.out.println("Input 1, 2, 3, or 4");
                     System.out.println("1. Rich and hearty flavored ramen");
                     System.out.println("2. Light and refreshing ramen");
                     System.out.println("3. Vegetarian option");
-                    System.out.println("4. Extra toppings");
                     userResp = in.next();
                     if (userResp.contains("1")) {
-                        System.out.println("We recommend Tonkotsu ramen or miso ramen, with Tonkotsu having a creamy, flavorful broth made from pork bones. It's perfect for those wanting a deep umami taste. Miso Ramen is made with miso-based broth, this ramen offers a savory, slightly tangy flavor, with a full-bodied richness. It's great for those who want a more intricate taste.")
+                        System.out.println("We recommend Tonkotsu ramen or miso ramen, with Tonkotsu having a creamy, flavorful broth made from pork bones. It's perfect for those wanting a deep umami taste. Miso Ramen is made with miso-based broth, this ramen offers a savory, slightly tangy flavor, with a full-bodied richness. It's great for those who want a more intricate taste.");
                     } else if (userResp.contains("2")) {
-                        System.out.println("We recommend Shoyu Ramen. This soy sauce-based broth is lighter than tonkotsu or miso but still offers a flavorful depth. Add some fresh veggies and a soft-boiled egg and it's perfect.")
+                        System.out.println("We recommend Shoyu Ramen. This soy sauce-based broth is lighter than tonkotsu or miso but still offers a flavorful depth. Add some fresh veggies and a soft-boiled egg and it's perfect.");
                     } else if (userResp.contains("3")) {
-                        System.out.println("We recommend Veggie Ramen, as not only is it the only vegetarian option but ")
-                    } else if (userResp.contains("4")) {
-                        
+                        System.out.println("We recommend Veggie Ramen, as not only is it the only vegetarian option but it has a variety of vegetables.");
                     } else {
-                        
+                        System.out.println("Exiting to main menu...");
+                        main(greet);
                     }
-                } else if (userResp.contains("barbecue")) {
-
+                } else if (userResp.contains("barbecue")||userResp.contains("bbq")||userResp.contains("barbeque")) {
+                    System.out.println("");
                 } else if (userResp.contains("appetizers")) {
 
                 } else {
@@ -243,11 +241,13 @@ public class Main {
                                 System.out.print(item.getName() + ", ");
                         }
                     }
-
+                    System.out.prinln("Of course! Our " + ramenTypes[i].getName() + " ramen is a" + ramenTypes[i].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
+                    userResp = in.next();
+                    if (userResp.contains("yes")) {
+                        help("help");
+                    }
                 }
-
             }
         }
     }
-
 }
