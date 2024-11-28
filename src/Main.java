@@ -192,7 +192,7 @@ public class Main {
                 System.out.println("Which food are you interested in, ramen, barbecue, or appetizers?");
                 userResp = in.next().toLowerCase();
                 if (userResp.contains("ramen")) {
-                    System.out.println("Input 1, 2, 3, or 4");
+                    System.out.println("Input 1, 2, or 3");
                     System.out.println("1. Rich and hearty flavored ramen");
                     System.out.println("2. Light and refreshing ramen");
                     System.out.println("3. Vegetarian option");
@@ -208,13 +208,27 @@ public class Main {
                         main(greet);
                     }
                 } else if (userResp.contains("barbecue")||userResp.contains("bbq")||userResp.contains("barbeque")) {
-                    System.out.println("");
+                    System.out.println("Input 1, 2, 3, or 4");
+                    System.out.println("1. Rich and hearty flavored ramen");
+                    System.out.println("2. Light and refreshing ramen");
+                    System.out.println("3. Vegetarian option");
+                    userResp = in.next();
+                    if (userResp.contains("1")) {
+                        System.out.println("We recommend Tonkotsu ramen or miso ramen, with Tonkotsu having a creamy, flavorful broth made from pork bones. It's perfect for those wanting a deep umami taste. Miso Ramen is made with miso-based broth, this ramen offers a savory, slightly tangy flavor, with a full-bodied richness. It's great for those who want a more intricate taste.");
+                    } else if (userResp.contains("2")) {
+                        System.out.println("We recommend Shoyu Ramen. This soy sauce-based broth is lighter than tonkotsu or miso but still offers a flavorful depth. Add some fresh veggies and a soft-boiled egg and it's perfect.");
+                    } else if (userResp.contains("3")) {
+                        System.out.println("We recommend Veggie Ramen, as not only is it the only vegetarian option but it has a variety of vegetables.");
+                    } else {
+                        System.out.println("Exiting to main menu...");
+                        main(greet);
+                    }
                 } else if (userResp.contains("appetizers")) {
 
                 } else {
                     System.out.println("Exiting to main menu...");
                 }
-            }                   // may want to write a helper method for detecting which food user wants
+            } // may want to write a helper method for detecting which food user wants
 
             else if (userResp.contains("description")) {
                 int itemChecker = -1;
@@ -241,10 +255,15 @@ public class Main {
                                 System.out.print(item.getName() + ", ");
                         }
                     }
-                    System.out.prinln("Of course! Our " + ramenTypes[i].getName() + " ramen is a" + ramenTypes[i].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
-                    userResp = in.next();
-                    if (userResp.contains("yes")) {
-                        help("help");
+                    System.out.println("Of course! Our " + ramenTypes[i].getName() + " ramen is a" + ramenTypes[i].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
+                    while (!userResp.contains("yes") || !userResp.contains("q")) {
+                        userResp = in.next();
+                        if (userResp.contains("yes")) {
+                            help("help");
+                        }
+                        else if (userResp.contains("q")) {
+                            main(greet);
+                        }
                     }
                 }
             }
