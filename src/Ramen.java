@@ -1,6 +1,6 @@
 public class Ramen extends Food { // inheritance?
-    public Ramen(String name, double price) {
-        super(name, price);
+    public Ramen(String name, double price, String description) {
+        super(name, price, description);
     }
     public Ramen(String name, String altName, String altName2, double price) {
         super(name, altName, altName2, price);
