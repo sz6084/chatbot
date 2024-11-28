@@ -21,6 +21,7 @@ public class Main {
         while(food==-1) {
             userResp = in.nextLine().toLowerCase(); // in.nextLine() uses the scanner object to get the user's
                                                        // response as a String
+            help(userResp);
             if (userResp.equals("q")) {
                 System.out.println(goodBye[(int) (Math.random() * 3)]);
                 System.exit(69);
@@ -208,13 +209,13 @@ public class Main {
                         main(greet);
                     }
                 } else if (userResp.contains("barbecue")||userResp.contains("bbq")||userResp.contains("barbeque")) {
-                    System.out.println("Input 1, 2, 3, or 4");
-                    System.out.println("1. Rich and hearty flavored ramen");
-                    System.out.println("2. Light and refreshing ramen");
-                    System.out.println("3. Vegetarian option");
+                    System.out.println("Input 1, 2, or 3");
+                    System.out.println("1. Classic Chicken BBQ");
+                    System.out.println("2. Beef & Short Ribs BBQ");
+                    System.out.println("3. Combination BBQ Platters");
                     userResp = in.next();
                     if (userResp.contains("1")) {
-                        System.out.println("We recommend Tonkotsu ramen or miso ramen, with Tonkotsu having a creamy, flavorful broth made from pork bones. It's perfect for those wanting a deep umami taste. Miso Ramen is made with miso-based broth, this ramen offers a savory, slightly tangy flavor, with a full-bodied richness. It's great for those who want a more intricate taste.");
+                        System.out.println("We recommend Teriyaki Chicken, Hawaiian BBQ Chicken, Chicken.");
                     } else if (userResp.contains("2")) {
                         System.out.println("We recommend Shoyu Ramen. This soy sauce-based broth is lighter than tonkotsu or miso but still offers a flavorful depth. Add some fresh veggies and a soft-boiled egg and it's perfect.");
                     } else if (userResp.contains("3")) {
@@ -255,15 +256,88 @@ public class Main {
                                 System.out.print(item.getName() + ", ");
                         }
                     }
-                    System.out.println("Of course! Our " + ramenTypes[i].getName() + " ramen is a" + ramenTypes[i].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
-                    while (!userResp.contains("yes") || !userResp.contains("q")) {
+                    System.out.println("Of course! Our " + ramenTypes[itemChecker].getName() + " ramen is a" + ramenTypes[itemChecker].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
+                    while (!userResp.contains("yes") && !userResp.contains("q")) {
                         userResp = in.next();
                         if (userResp.contains("yes")) {
                             help("help");
+                            break;
                         }
                         else if (userResp.contains("q")) {
                             main(greet);
+                            break;
                         }
+                        System.out.println(getRandomResponse() + " Type 'q' to exit to the main menu, or 'yes' to ask about another dish.");
+                    }
+                }
+                if (userResp.contains("barbeque")) {
+                    System.out.print("Sure! Which of the following barbeque flavors are you interested in? ");
+                    for (BBQ x : bbqs) {
+                        System.out.print(x.getName() + ", ");
+                    }
+                    while (itemChecker == -1) {
+                        userResp = in.nextLine().toLowerCase();
+                        checkForQuit(userResp);
+                        for (int i=0;i<bbqs.length;i++) {
+                            if (userResp.contains(bbqs[i].getName())) {
+                                itemChecker = i;
+                            }
+                        }
+                        if (itemChecker != -1) {
+                            break;
+                        }
+                        System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                        for (BBQ item : bbqs) { // display out method
+                                System.out.print(item.getName() + ", ");
+                        }
+                    }
+                    System.out.println("Of course! Our " + bbqs[itemChecker].getName() + " ramen is a" + bbqs[itemChecker].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
+                    while (!userResp.contains("yes") && !userResp.contains("q")) {
+                        userResp = in.next();
+                        if (userResp.contains("yes")) {
+                            help("help");
+                            break;
+                        }
+                        else if (userResp.contains("q")) {
+                            main(greet);
+                            break;
+                        }
+                        System.out.println(getRandomResponse() + " Type 'q' to exit to the main menu, or 'yes' to ask about another dish.");
+                    }
+                }
+                if (userResp.contains("appetizer")) {
+                    System.out.print("Sure! Which of the following barbeque flavors are you interested in? ");
+                    for (Appetizer x : appetizers) {
+                        System.out.print(x.getName() + ", ");
+                    }
+                    while (itemChecker == -1) {
+                        userResp = in.nextLine().toLowerCase();
+                        checkForQuit(userResp);
+                        for (int i=0;i<appetizers.length;i++) {
+                            if (userResp.contains(appetizers[i].getName())) {
+                                itemChecker = i;
+                            }
+                        }
+                        if (itemChecker != -1) {
+                            break;
+                        }
+                        System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                        for (Appetizer item : appetizers) { // display out method
+                                System.out.print(item.getName() + ", ");
+                        }
+                    }
+                    System.out.println("Of course! Our " + appetizers[itemChecker].getName() + " ramen is a" + appetizers[itemChecker].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
+                    while (!userResp.contains("yes") && !userResp.contains("q")) {
+                        userResp = in.next();
+                        if (userResp.contains("yes")) {
+                            help("help");
+                            break;
+                        }
+                        else if (userResp.contains("q")) {
+                            main(greet);
+                            break;
+                        }
+                        System.out.println(getRandomResponse() + " Type 'q' to exit to the main menu, or 'yes' to ask about another dish.");
                     }
                 }
             }
