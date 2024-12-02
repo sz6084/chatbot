@@ -28,7 +28,7 @@ public class Main {
             if (food!=-1) {
                 break;
             }
-            System.out.println(getRandomResponse() + "You can ask me about any of our three categories on our menu: Ramen, barbeque, and appetizers.");
+            System.out.println(getRandomResponse() + "You can ask me about any of our three categories on our menu: ramen, barbeque, and appetizers.");
         }
         if (food != -1) {
             System.out.print("Sure! We offer a variety of " + keywords[food] + ", including our top choices: ");
@@ -189,20 +189,40 @@ public class Main {
 
     public static void help(String n) {
         if (n.contains("help")) {
-            System.out.println("Sure! Do you want descriptions or recommendations?");
+            System.out.println("Sure! Would you like to hear about the descriptions of certain dishes or recommendations? If not, type 'q' to return to the main menu.");
             String userResp = in.nextLine().toLowerCase();
+            if (userResp.equals("q")) {
+                main(greet);
+            }
             while (!userResp.contains("recommend") && !userResp.contains("description")) {
-                System.out.println(getRandomResponse() + "Would you like to ask me for a description or a recommendation for a dish?");
+                System.out.println(getRandomResponse() + "Would you like to ask me for a description or a recommendation for a dish? Type 'q' if you would like to return to the main menu.");
                 userResp = in.nextLine().toLowerCase();
+                if (userResp.equals("q")) {
+                    main(greet);
+                    break;
+                }
             }
             if (userResp.contains("recommend")) {
-                System.out.println("Which food are you interested in, ramen, barbecue, or appetizers?");
+                System.out.println("Which food are you interested in, ramen, barbecue, or appetizers? If not, type 'q' to quit to the main menu.");
                 userResp = in.nextLine().toLowerCase();
+                while (!userResp.contains("ramen") && !userResp.contains("appetizer") && !userResp.contains("barbecue") && !userResp.contains("barbeque") && !userResp.contains("bbq")) {
+                    if (userResp.equals("q")) {
+                        main(greet);
+                        break;
+                    }
+                    System.out.println(getRandomResponse() + "Let me know if you are interested in ramen, barbecue, or appetizers. Input 'q' to quit out to the main menu.");
+                    userResp = in.nextLine().toLowerCase();
+                    if (userResp.equals("q")) {
+                        main(greet);
+                        break;
+                    }
+                }
                 if (userResp.contains("ramen")) {
                     System.out.println("Input 1, 2, or 3 that best matches what you're interested in: ");
                     System.out.println("1. Rich and hearty flavored ramen");
                     System.out.println("2. Light and refreshing ramen");
                     System.out.println("3. Vegetarian option");
+                    System.out.println("Or, type 'q' to return to the main menu.");
                     while (!userResp.contains("1") && !userResp.contains("2") && !userResp.contains("3")) {
                     userResp = in.nextLine();
                     if (userResp.contains("1")) {
@@ -217,6 +237,7 @@ public class Main {
                     } else {
                         System.out.println(getRandomResponse() + " Please type a number from 1 to 3 for a recommendation for the corresponding choice. If you would like to return to the main menu, please type q.");
                     }
+                }
                     System.out.println(" Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu. ");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
                         userResp = in.nextLine();
@@ -228,12 +249,13 @@ public class Main {
                         }
                         System.out.println(getRandomResponse() + " Type 'q' to exit to the main menu, or 'yes' to ask about another dish.");
                     } 
-                }
+                
                 } else if (userResp.contains("barbecue")||userResp.contains("bbq")||userResp.contains("barbeque")) {
                     System.out.println("Input 1, 2, or 3 that best matches what you're interested in: ");
                     System.out.println("1. Classic Chicken BBQ");
                     System.out.println("2. Beef & Short Ribs BBQ");
                     System.out.println("3. Combination BBQ Platters");
+                    System.out.println("Or, type 'q' to return to the main menu.");
                     while (!userResp.contains("1") && !userResp.contains("2") && !userResp.contains("3")) {
                     userResp = in.nextLine();
                     if (userResp.contains("1")) {
@@ -248,6 +270,7 @@ public class Main {
                     } else {
                         System.out.println(getRandomResponse() + " Please type a number from 1 to 3 for a recommendation for the corresponding choice. If you would like to return to the main menu, please type q.");
                     } 
+                }
                     System.out.println(" Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu. ");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
                         userResp = in.nextLine();
@@ -261,13 +284,14 @@ public class Main {
                         }
                         System.out.println(getRandomResponse() + " Type 'q' to exit to the main menu, or 'yes' to ask about another dish.");
                     }
-                }
+                
                 } else if (userResp.contains("appetizers")) {
                     System.out.println("Input 1, 2, or 3 that best matches what you're interested in: ");
                     System.out.println("1. Something light");
                     System.out.println("2. A fried snack");
                     System.out.println("3. Seafood ");
                     System.out.println("4. Vegetarian options");
+                    System.out.println("Or, type 'q' to return to the main menu.");
                     while (!userResp.contains("1") && !userResp.contains("2") && !userResp.contains("3") && !userResp.contains("4")) {
                     userResp = in.nextLine();
                     if (userResp.contains("1")) {
@@ -299,14 +323,18 @@ public class Main {
                     System.out.println(getRandomResponse() + " Type 'q' to exit to the main menu, or 'yes' to ask about another dish.");
                 }
                 } 
-            } // may want to write a helper method for detecting which food user wants
+            }
 
             else if (userResp.contains("description")) {
                 int itemChecker = -1;
-                System.out.println("Alright! What menu category would you like to know about? Ramen, barbeque, or appetizers.");
+                System.out.println("Alright! What menu category would you like to know about? Ramen, barbeque, or appetizers? Type 'q' to return to the main menu, if you so wish.");
                 while (!userResp.contains("ramen") && !userResp.contains("barbeque") && !userResp.contains("appetizer")) {
                 userResp = in.nextLine().toLowerCase();
-                if (userResp.contains("ramen") || userResp.contains("barbeque") || userResp.contains("appetizer")) {
+                if (userResp.contains("ramen") || userResp.contains("barbeque") || userResp.contains("bbq") || userResp.contains("barbecue") || userResp.contains("appetizer")) {
+                    break;
+                }
+                if (userResp.equals("q")) {
+                    main(greet);
                     break;
                 }
                 System.out.println(getRandomResponse() + "Type in one of our three menu categories: ramen, barbeque, or appetizer. If you would like to go back to the main menu, type 'q'");
@@ -319,6 +347,7 @@ public class Main {
                     for (Ramen x : ramenTypes) {
                         System.out.print(x.getName() + ", ");
                     }
+                    System.out.println("Or, type 'q' to head back to the main menu.");
                     while (itemChecker == -1) {
                         userResp = in.nextLine().toLowerCase();
                         checkForQuit(userResp);
@@ -349,11 +378,12 @@ public class Main {
                         System.out.println(getRandomResponse() + " Type 'q' to exit to the main menu, or 'yes' to ask about another dish.");
                     }
                 }
-                else if (userResp.contains("barbeque")) {
+                else if (userResp.contains("barbeque") || userResp.contains("bbq") || userResp.contains("barbecue")) {
                     System.out.print("Sure! Which of the following barbeque flavors are you interested in? ");
                     for (BBQ x : bbqs) {
                         System.out.print(x.getName() + ", ");
                     }
+                    System.out.println("Or type 'q' to head back to the main menu.");
                     while (itemChecker == -1) {
                         userResp = in.nextLine().toLowerCase();
                         checkForQuit(userResp);
@@ -369,6 +399,7 @@ public class Main {
                         for (BBQ item : bbqs) { // display out method
                                 System.out.print(item.getName() + ", ");
                         }
+                        System.out.println("Or, type 'q' to go back to the main menu.");
                     }
                     System.out.println("Of course! Our " + bbqs[itemChecker].getName() + " ramen is a" + bbqs[itemChecker].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
@@ -389,6 +420,7 @@ public class Main {
                     for (Appetizer x : appetizers) {
                         System.out.print(x.getName() + ", ");
                     }
+                    System.out.println("Or, type 'q' to return to the main menu.");
                     while (itemChecker == -1) {
                         userResp = in.nextLine().toLowerCase();
                         checkForQuit(userResp);
@@ -404,6 +436,7 @@ public class Main {
                         for (Appetizer item : appetizers) { // display out method
                                 System.out.print(item.getName() + ", ");
                         }
+                        System.out.println("Or, type 'q' to head back to the main menu.");
                     }
                     System.out.println("Of course! Our " + appetizers[itemChecker].getName() + " ramen is a" + appetizers[itemChecker].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
