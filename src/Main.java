@@ -456,7 +456,7 @@ public class Main {
     }
 
     public static void println(String message) {
-        int delay = 20; // Delay in milliseconds
+        int delay = 10; // Delay in milliseconds
 
         for (char ch : message.toCharArray()) {
             System.out.print(ch);  // Print each character
