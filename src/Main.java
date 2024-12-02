@@ -79,7 +79,7 @@ public class Main {
                 }
                 println(getRandomResponse() + "Enter an integer from 0 to 4 inclusive to determine your spice level: ");
             }
-                System.out.printf("You placed an order for %s with spice level %s which is $%.2f%n",ramenTypes[foodIndex].getName(), spiceCheck, ramenTypes[foodIndex].getPrice()); // printf
+                System.out.printf("You placed an order for %s with spice level %s which is $%.2f%n",ramenTypes[foodIndex].getName(), spiceCheck, ramenTypes[foodIndex].getPrice());
                 println("Type yes to confirm your order, and type no to quit to the main menu: ");
                 while (!(userResp.equals("yes") && userResp.equals("no"))) {
                 userResp = in.nextLine().toLowerCase();
@@ -110,7 +110,7 @@ public class Main {
                             System.out.print(item.getName() + ", ");
                         }
                 }
-                System.out.printf("You placed an order for %s which is $%.2f%n",bbqs[foodIndex].getName(),bbqs[foodIndex].getPrice()); // printf
+                System.out.printf("You placed an order for %s which is $%.2f%n",bbqs[foodIndex].getName(),bbqs[foodIndex].getPrice());
                 println("Type yes to confirm your order, and type no to quit to the main menu: ");
                 while (!(userResp.equals("yes") && userResp.equals("no"))) {
                 userResp = in.nextLine().toLowerCase();
@@ -141,7 +141,7 @@ public class Main {
                             System.out.print(item.getName() + ", ");
                         }
                 }
-                System.out.printf("You placed an order for %s which is $%.2f%n",appetizers[foodIndex].getName(),appetizers[foodIndex].getPrice()); // printf
+                System.out.printf("You placed an order for %s which is $%.2f%n",appetizers[foodIndex].getName(),appetizers[foodIndex].getPrice());
                 println("Type yes to confirm your order, and type no to quit to the main menu: ");
                 while (!(userResp.equals("yes") && userResp.equals("no"))) {
                 userResp = in.nextLine().toLowerCase();
