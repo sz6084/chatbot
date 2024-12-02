@@ -400,7 +400,7 @@ public class Main {
                         }
                         println("Or, type 'q' to go back to the main menu.");
                     }
-                    println("Of course! Our " + bbqs[itemChecker].getName() + " ramen is a" + bbqs[itemChecker].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
+                    println("Of course! Our " + bbqs[itemChecker].getName() + " ramen is a" + bbqs[itemChecker].getDescription() + " Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
                         userResp = in.nextLine().toLowerCase();
                         if (userResp.contains("yes")) {
@@ -437,7 +437,7 @@ public class Main {
                         }
                         println("Or, type 'q' to head back to the main menu.");
                     }
-                    println("Of course! Our " + appetizers[itemChecker].getName() + " ramen is a" + appetizers[itemChecker].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
+                    println("Of course! Our " + appetizers[itemChecker].getName() + " ramen is a" + appetizers[itemChecker].getDescription() + " Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
                         userResp = in.nextLine().toLowerCase();
                         if (userResp.contains("yes")) {
