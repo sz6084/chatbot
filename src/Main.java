@@ -10,7 +10,6 @@ public class Main {
     static BBQ[] bbqs = {new BBQ("chicken katsu",15, " crispy, golden-breaded chicken cutlets served with a tangy katsu sauce for a savory crunch in every bite."), new BBQ("teriyaki chicken", 15, " grilled chicken glazed in a sweet and savory teriyaki sauce, perfectly caramelized for a rich flavor."), new BBQ("hawaiian bbq chicken",15, " juicy, marinated chicken grilled to perfection with a touch of smoky island-inspired sweetness."), new BBQ("hawaiian bbq beef",16, " tender slices of marinated beef, grilled and infused with the bold, savory flavors of Hawaiian barbecue."), new BBQ("hawaiian bbq short rib", 17, " succulent, bone-in short ribs with a sweet and smoky glaze, charred to a delicious finish."), new BBQ("bbq chicken and beef",17, " a flavorful combo of grilled Hawaiian BBQ chicken and beef, offering the best of both worlds."), new BBQ("bbq chicken and chicken katsu",17, " satisfying pairing of crispy chicken katsu and juicy Hawaiian BBQ chicken, perfect for variety lovers."), new BBQ("hawaiian bbq trio",19, " hearty platter combining Hawaiian BBQ chicken, beef, and short rib, for the ultimate BBQ feast.")};
     static Appetizer[] appetizers = { new Appetizer("chicken kara-age", 11, " japanese style popcorn chicken with a side of spicy mayo."), new Appetizer("grill whole squid", 11, " whole squid sliced and generously sauced."), new Appetizer("gyoza", 8, " deep fried pork potstickers with a side of a soy vinegar and chili oil sauce."), new Appetizer("agedashi tofu", 8, "Drudged in sweet potato flour and fried. topped with bonito flakes (fish flakes). Accompanied by a side of Tempura Sauce."), new Appetizer("takoyaki", 10, " traditionally considered Japanese street food. Little leg of octopus, battered and fried into a ball, sauced, and topped with bonito flakes (fish flakes)."), new Appetizer("prawn tempura", 10, " Japanese stretched fried prawn. Accompanied by a side of Tempura Sauce."), new Appetizer("vegetable tempura", 10, " Japanese style assorted fried vegetables. Includes broccoli, zucchini,sweet potatoe, and onion. Accompanied by a side of Tempura Sauce."), new Appetizer("kaki fry", 9, " deep fried oysters with a side of spicy mayo."), new Appetizer("geso fry", 10, " fried squid legs with a side of spicy mayo."), new Appetizer("spam musubi", 8, " rice and spam wrapped tightly around with seaweed with sauce inside"), new Appetizer("lumpia", 8, " Filipino style mini egg rolls filled with pork and veggies. Comes with a side of sweet and sour sauce."), new Appetizer("crab rangoons",8, " deep fried wonton wrappers filled with cream cheese and imitation crab. Comes with a side of sweet and sour sauce"), new Appetizer("edamame", 8, " al dente boiled soy beans and salted."), new Appetizer("spicy cucumber salad", 8, " refreshing side dish featuring crisp cucumber slices tossed in a tangy, spicy dressing with hints of garlic and sesame. It's the perfect balance of heat and coolness, ideal for complementing any meal."), new Appetizer("white rice", 3, " every asian's favorite food.")};
     // bbq parsing
-    // parse input by lowering case
     static Scanner in = new Scanner(System.in); // Creates global scanner object.
 
     public static void main(String[] args) {
@@ -195,7 +194,7 @@ public class Main {
                 main(greet);
             }
             while (!userResp.contains("recommend") && !userResp.contains("description")) {
-                System.out.println(getRandomResponse() + "Would you like to ask me for a description or a recommendation for a dish? Type 'q' if you would like to return to the main menu.");
+                System.out.println("Would you like to ask me for a description or a recommendation for a dish? Type 'q' if you would like to return to the main menu.");
                 userResp = in.nextLine().toLowerCase();
                 if (userResp.equals("q")) {
                     main(greet);
@@ -293,22 +292,22 @@ public class Main {
                     System.out.println("4. Vegetarian options");
                     System.out.println("Or, type 'q' to return to the main menu.");
                     while (!userResp.contains("1") && !userResp.contains("2") && !userResp.contains("3") && !userResp.contains("4")) {
-                    userResp = in.nextLine();
-                    if (userResp.contains("1")) {
-                        System.out.print("We recommend getting the edamame. It's a perfect, small appetizer filled with a savory flavor that's perfect before any of our main courses.");
-                    } else if (userResp.contains("2")) {
-                        System.out.print("We recommend the chicken kara-age or geso fry. Both have a numerous amount of delicious spices mixed together to create a rich flavor, which complements the spicy mayo that comes with each.");
-                    } else if (userResp.contains("3")) {
-                        System.out.print("We recommend the takoyaki. Each fried ball is packed with seasoned octopus and mouth-watering sauces, seasoned with our signature sesame seeds and fish flakes.");
-                    } else if (userResp.contains("4")) {
-                        System.out.print("We recommend the vegetable tempura. Carefully deep fried, this appetizer has the most satisfying crunch with every bite.");
-                    } else if (userResp.equals("q")) {
-                        System.out.println("Exiting to main menu...");
-                        main(greet);
-                    } else {
-                        System.out.println(getRandomResponse() + " Please type a number from 1 to 4 for a recommendation for the corresponding choice. If you would like to return to the main menu, please type q.");
+                        userResp = in.nextLine();
+                        if (userResp.contains("1")) {
+                            System.out.print("We recommend getting the edamame. It's a small appetizer filled with a savory flavor that's perfect before any of our main courses.");
+                        } else if (userResp.contains("2")) {
+                            System.out.print("We recommend the chicken kara-age or geso fry. Both have a numerous amount of delicious spices mixed together to create a rich flavor, which complements the spicy mayo that comes with each.");
+                        } else if (userResp.contains("3")) {
+                            System.out.print("We recommend the takoyaki. Each fried ball is packed with seasoned octopus and mouth-watering sauces, seasoned with our signature sesame seeds and fish flakes.");
+                        } else if (userResp.contains("4")) {
+                            System.out.print("We recommend the vegetable tempura. Carefully deep fried, this appetizer has the most satisfying crunch with every bite.");
+                        } else if (userResp.equals("q")) {
+                            System.out.println("Exiting to main menu...");
+                            main(greet);
+                        } else {
+                            System.out.println(getRandomResponse() + " Please type a number from 1 to 4 for a recommendation for the corresponding choice. If you would like to return to the main menu, please type q.");
+                        }
                     }
-                }
                 System.out.println(" Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu. ");
                 while (!userResp.contains("yes") && !userResp.contains("q")) {
                     userResp = in.nextLine().toLowerCase();
@@ -329,16 +328,16 @@ public class Main {
                 int itemChecker = -1;
                 System.out.println("Alright! What menu category would you like to know about? Ramen, barbeque, or appetizers? Type 'q' to return to the main menu, if you so wish.");
                 while (!userResp.contains("ramen") && !userResp.contains("barbeque") && !userResp.contains("appetizer")) {
-                userResp = in.nextLine().toLowerCase();
-                if (userResp.contains("ramen") || userResp.contains("barbeque") || userResp.contains("bbq") || userResp.contains("barbecue") || userResp.contains("appetizer")) {
-                    break;
+                    userResp = in.nextLine().toLowerCase();
+                    if (userResp.contains("ramen") || userResp.contains("barbeque") || userResp.contains("bbq") || userResp.contains("barbecue") || userResp.contains("appetizer")) {
+                        break;
+                    }
+                    if (userResp.equals("q")) {
+                        main(greet);
+                        break;
+                    }
+                    System.out.println(getRandomResponse() + "Type in one of our three menu categories: ramen, barbeque, or appetizer. If you would like to go back to the main menu, type 'q'");
                 }
-                if (userResp.equals("q")) {
-                    main(greet);
-                    break;
-                }
-                System.out.println(getRandomResponse() + "Type in one of our three menu categories: ramen, barbeque, or appetizer. If you would like to go back to the main menu, type 'q'");
-            }
                 if (userResp.equals("q")) {
                     main(greet);
                 }
