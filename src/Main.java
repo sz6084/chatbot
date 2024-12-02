@@ -30,18 +30,18 @@ public class Main {
             println(getRandomResponse() + "You can ask me about any of our three categories on our menu: ramen, barbeque, and appetizers.");
         }
         if (food != -1) {
-            System.out.print("Sure! We offer a variety of " + keywords[food] + ", including our top choices: ");
+            println("Sure! We offer a variety of " + keywords[food] + ", including our top choices: ");
             if (keywords[food].equals("ramen")) {
                 for (Ramen item : ramenTypes) { // display out method
-                    System.out.print(item.getName() + ", ");
+                    println(item.getName() + ", ");
                 }
             } else if (keywords[food].equals("bbq") || keywords[food].equals("barbeque") || keywords[food].equals("barbecue")) {
                 for (BBQ item : bbqs) {
-                    System.out.print(item.getName() + ", ");
+                    println(item.getName() + ", ");
                 }
             } else if (keywords[food].equals("appetizers") || keywords[food].equals("appetizer")) {
                 for (Appetizer item : appetizers) {
-                    System.out.print(item.getName() + ", ");
+                    println(item.getName() + ", ");
                 }
             }
 
@@ -59,12 +59,14 @@ public class Main {
                 if (foodIndex != -1) {
                     break;
                 }
-                System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
-                    for (Ramen item : ramenTypes) { // display out method
-                        System.out.print(item.getName() + ", ");
+                println(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                for (int i=0;i<ramenTypes.length;i++) {
+                    if (i==ramenTypes.length-1) {
+                        println(ramenTypes[i].getName() + ".");
+                    } else {
+                        println(ramenTypes[i].getName() + ", ");
                     }
-
-                
+                }
             }
             int spiceCheck = -1;
             println("How spicy would you like your " + ramenTypes[foodIndex].getName() + " ramen to be? Please enter an integer from 0 to 4 inclusive, with 0 being no spice and 4 being extra spicy. If you would like to exit to the main menu, please type 'q'.");
@@ -110,9 +112,13 @@ public class Main {
                     if (foodIndex != -1) {
                         break;
                     }
-                    System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
-                        for (BBQ item : bbqs) {
-                            System.out.print(item.getName() + ", ");
+                    println(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                        for (int i=0;i<bbqs.length;i++) {
+                            if (i==bbqs.length-1) {
+                                println(bbqs[i].getName() + ".");
+                            } else {
+                                println(bbqs[i].getName() + ", ");
+                            }
                         }
                 }
                 System.out.printf("You placed an order for %s which is $%.2f%n",bbqs[foodIndex].getName(),bbqs[foodIndex].getPrice());
@@ -141,10 +147,14 @@ public class Main {
                     if (foodIndex != -1) {
                         break;
                     }
-                    System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
-                        for (Appetizer item : appetizers) {
-                            System.out.print(item.getName() + ", ");
+                    println(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                    for (int i=0;i<appetizers.length;i++) {
+                        if (i==appetizers.length-1) {
+                            println(appetizers[i].getName() + ".");
+                        } else {
+                            println(appetizers[i].getName() + ", ");
                         }
+                    }
                 }
                 System.out.printf("You placed an order for %s which is $%.2f%n",appetizers[foodIndex].getName(),appetizers[foodIndex].getPrice());
                 println("Type yes to confirm your order, and type no to quit to the main menu: ");
@@ -299,13 +309,13 @@ public class Main {
                     while (!userResp.contains("1") && !userResp.contains("2") && !userResp.contains("3") && !userResp.contains("4")) {
                         userResp = in.nextLine();
                         if (userResp.contains("1")) {
-                            System.out.print("We recommend getting the edamame. It's a small appetizer filled with a savory flavor that's perfect before any of our main courses.");
+                            println("We recommend getting the edamame. It's a small appetizer filled with a savory flavor that's perfect before any of our main courses.");
                         } else if (userResp.contains("2")) {
-                            System.out.print("We recommend the chicken kara-age or geso fry. Both have a numerous amount of delicious spices mixed together to create a rich flavor, which complements the spicy mayo that comes with each.");
+                            println("We recommend the chicken kara-age or geso fry. Both have a numerous amount of delicious spices mixed together to create a rich flavor, which complements the spicy mayo that comes with each.");
                         } else if (userResp.contains("3")) {
-                            System.out.print("We recommend the takoyaki. Each fried ball is packed with seasoned octopus and mouth-watering sauces, seasoned with our signature sesame seeds and fish flakes.");
+                            println("We recommend the takoyaki. Each fried ball is packed with seasoned octopus and mouth-watering sauces, seasoned with our signature sesame seeds and fish flakes.");
                         } else if (userResp.contains("4")) {
-                            System.out.print("We recommend the vegetable tempura. Carefully deep fried, this appetizer has the most satisfying crunch with every bite.");
+                            println("We recommend the vegetable tempura. Carefully deep fried, this appetizer has the most satisfying crunch with every bite.");
                         } else if (userResp.equals("q")) {
                             println("Exiting to main menu...");
                             main(greet);
@@ -347,9 +357,9 @@ public class Main {
                     main(greet);
                 }
                 else if (userResp.contains("ramen")) {
-                    System.out.print("Sure! Which of the following ramen flavors are you interested in? ");
+                    println("Sure! Which of the following ramen flavors are you interested in? ");
                     for (Ramen x : ramenTypes) {
-                        System.out.print(x.getName() + ", ");
+                        println(x.getName() + ", ");
                     }
                     println("Or, type 'q' to head back to the main menu.");
                     while (itemChecker == -1) {
@@ -363,9 +373,13 @@ public class Main {
                         if (itemChecker != -1) {
                             break;
                         }
-                        System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
-                        for (Ramen item : ramenTypes) { // display out method
-                                System.out.print(item.getName() + ", ");
+                        println(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                        for (int i=0;i<ramenTypes.length;i++) {
+                            if (i==ramenTypes.length-1) {
+                                println(ramenTypes[i].getName() + ".");
+                            } else {
+                                println(ramenTypes[i].getName() + ", ");
+                            }
                         }
                     }
                     println("Of course! Our " + ramenTypes[itemChecker].getName() + " ramen is a" + ramenTypes[itemChecker].getDescription() + " Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
@@ -383,9 +397,9 @@ public class Main {
                     }
                 }
                 else if (userResp.contains("barbeque") || userResp.contains("bbq") || userResp.contains("barbecue")) {
-                    System.out.print("Sure! Which of the following barbeque flavors are you interested in? ");
+                    println("Sure! Which of the following barbeque flavors are you interested in? ");
                     for (BBQ x : bbqs) {
-                        System.out.print(x.getName() + ", ");
+                        println(x.getName() + ", ");
                     }
                     println("Or type 'q' to head back to the main menu.");
                     while (itemChecker == -1) {
@@ -399,9 +413,13 @@ public class Main {
                         if (itemChecker != -1) {
                             break;
                         }
-                        System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
-                        for (BBQ item : bbqs) { // display out method
-                                System.out.print(item.getName() + ", ");
+                        println(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                        for (int i=0;i<bbqs.length;i++) {
+                            if (i==bbqs.length-1) {
+                                println(bbqs[i].getName() + ".");
+                            } else {
+                                println(bbqs[i].getName() + ", ");
+                            }
                         }
                         println("Or, type 'q' to go back to the main menu.");
                     }
@@ -420,9 +438,9 @@ public class Main {
                     }
                 }
                 else if (userResp.contains("appetizer")) {
-                    System.out.print("Sure! Which of the following barbeque flavors are you interested in? ");
+                    println("Sure! Which of the following barbeque flavors are you interested in? ");
                     for (Appetizer x : appetizers) {
-                        System.out.print(x.getName() + ", ");
+                        println(x.getName() + ", ");
                     }
                     println("Or, type 'q' to return to the main menu.");
                     while (itemChecker == -1) {
@@ -436,9 +454,13 @@ public class Main {
                         if (itemChecker != -1) {
                             break;
                         }
-                        System.out.print(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
-                        for (Appetizer item : appetizers) { // display out method
-                                System.out.print(item.getName() + ", ");
+                        println(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
+                        for (int i=0;i<appetizers.length;i++) {
+                            if (i==appetizers.length-1) {
+                                println(appetizers[i].getName() + ".");
+                            } else {
+                                println(appetizers[i].getName() + ", ");
+                            }
                         }
                         println("Or, type 'q' to head back to the main menu.");
                     }
