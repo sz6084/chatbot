@@ -66,33 +66,38 @@ public class Main {
 
                 
             }
-            String spiceCheck = "-1";
+            int spiceCheck = -1;
             println("How spicy would you like your " + ramenTypes[foodIndex].getName() + " ramen to be? Please enter an integer from 0 to 4 inclusive, with 0 being no spice and 4 being extra spicy. If you would like to exit to the main menu, please type 'q'.");
-            while (spiceCheck.equals("-1")) {
+            while (spiceCheck==-1) {
                 userResp = in.nextLine().toLowerCase(); 
                 if (userResp.equals("q")) {
                     main(greet);
                 }
                 if (userResp.contains("0") || userResp.contains("1") || userResp.contains("2") || userResp.contains("3") || userResp.contains("4")) {
-                    spiceCheck = userResp;
-                    break;
+                    try {
+                        spiceCheck = Integer.parseInt(userResp);
+                        break;
+                    }
+                    catch (NumberFormatException e) {
+                        println("Please enter a valid number.");
+                    }
                 }
                 println(getRandomResponse() + "Enter an integer from 0 to 4 inclusive to determine your spice level: ");
             }
-                System.out.printf("You placed an order for %s with spice level %s which is $%.2f%n",ramenTypes[foodIndex].getName(), spiceCheck, ramenTypes[foodIndex].getPrice());
+                System.out.printf("You placed an order for %s with spice level %d which is $%.2f%n",ramenTypes[foodIndex].getName(), spiceCheck, ramenTypes[foodIndex].getPrice());
                 println("Type yes to confirm your order, and type no to quit to the main menu: ");
-                while (!(userResp.equals("yes") && userResp.equals("no"))) {
-                userResp = in.nextLine().toLowerCase();
-                if (userResp.equals("yes")) {
-                    println("Your order has been placed, enjoy! 🍜");
-                    break;
-                } else if (userResp.equals("no")) {
-                    main(greet);
+                while (!(userResp.equals("yes") && !userResp.equals("no"))) {
+                    userResp = in.nextLine().toLowerCase();
+                    if (userResp.equals("yes")) { // .contains?
+                        println("Your order has been placed, enjoy! 🍜");
+                        break;
+                    } else if (userResp.equals("no")) {
+                        main(greet);
+                    }
+                    else {
+                        println(getRandomResponse() + "If you would like to confirm your order, please type 'yes'. To return back into the main menu, please type 'no'.");
+                    }
                 }
-                else {
-                    println(getRandomResponse() + "If you would like to confirm your order, please type 'yes'. To return back into the main menu, please type 'no'.");
-                }
-            }
             } else if(food == 1 || food == 3 || food == 4) {
                 while (foodIndex == -1) {
                     userResp = in.nextLine().toLowerCase();
@@ -112,18 +117,18 @@ public class Main {
                 }
                 System.out.printf("You placed an order for %s which is $%.2f%n",bbqs[foodIndex].getName(),bbqs[foodIndex].getPrice());
                 println("Type yes to confirm your order, and type no to quit to the main menu: ");
-                while (!(userResp.equals("yes") && userResp.equals("no"))) {
-                userResp = in.nextLine().toLowerCase();
-                if(userResp.equals("yes")) {
-                    println("Your order has been placed, enjoy! 🥩");
-                    break;
-                } else if (userResp.equals("no")) {
-                    main(greet);
+                while (!(userResp.equals("yes") && !userResp.equals("no"))) {
+                    userResp = in.nextLine().toLowerCase();
+                    if(userResp.equals("yes")) {
+                        println("Your order has been placed, enjoy! 🥩");
+                        break;
+                    } else if (userResp.equals("no")) {
+                        main(greet);
+                    }
+                    else {
+                        println(getRandomResponse() + "If you would like to confirm your order, please type 'yes'. To return back into the main menu, please type 'no'.");
+                    }
                 }
-                else {
-                    println(getRandomResponse() + "If you would like to confirm your order, please type 'yes'. To return back into the main menu, please type 'no'.");
-                }
-            }
             } else if(food==2 || food == 5) {
                 while (foodIndex == -1) {
                     userResp = in.nextLine().toLowerCase();
@@ -143,18 +148,18 @@ public class Main {
                 }
                 System.out.printf("You placed an order for %s which is $%.2f%n",appetizers[foodIndex].getName(),appetizers[foodIndex].getPrice());
                 println("Type yes to confirm your order, and type no to quit to the main menu: ");
-                while (!(userResp.equals("yes") && userResp.equals("no"))) {
-                userResp = in.nextLine().toLowerCase();
-                if(userResp.equals("yes")) {
-                    println("Your order has been placed, enjoy! 🍽️");
-                     break;
-                } else if (userResp.equals("no")) {
-                    main(greet);
+                while (!(userResp.equals("yes") && !userResp.equals("no"))) {
+                    userResp = in.nextLine().toLowerCase();
+                    if(userResp.equals("yes")) {
+                        println("Your order has been placed, enjoy! 🍽️");
+                        break;
+                    } else if (userResp.equals("no")) {
+                        main(greet);
+                    }
+                    else {
+                        println(getRandomResponse() + "If you would like to confirm your order, please type 'yes'. To return back into the main menu, please type 'no'.");
+                    }
                 }
-                else {
-                    println(getRandomResponse() + "If you would like to confirm your order, please type 'yes'. To return back into the main menu, please type 'no'.");
-                }
-            }
         }
             else if (foodIndex == -1){
                 println(getRandomResponse());
@@ -400,7 +405,7 @@ public class Main {
                         }
                         println("Or, type 'q' to go back to the main menu.");
                     }
-                    println("Of course! Our " + bbqs[itemChecker].getName() + " ramen is a" + bbqs[itemChecker].getDescription() + " Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
+                    println("Of course! Our " + bbqs[itemChecker].getName() + " bbq is a" + bbqs[itemChecker].getDescription() + " Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
                         userResp = in.nextLine().toLowerCase();
                         if (userResp.contains("yes")) {
@@ -437,7 +442,7 @@ public class Main {
                         }
                         println("Or, type 'q' to head back to the main menu.");
                     }
-                    println("Of course! Our " + appetizers[itemChecker].getName() + " ramen is a" + appetizers[itemChecker].getDescription() + " Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
+                    println("Of course! Our " + appetizers[itemChecker].getName() + " appetizer is a" + appetizers[itemChecker].getDescription() + " Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
                         userResp = in.nextLine().toLowerCase();
                         if (userResp.contains("yes")) {
