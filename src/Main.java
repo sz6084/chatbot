@@ -5,7 +5,7 @@ public class Main {
     static String[] greet = { "Hello! Welcome to Ramen101!", "Salutations good customer! Welcome to Ramen101." };
     static String[] goodBye = {"Goodbye!", "See you later!", "Good doing business with you!", "Thanks for stopping by!", "Enjoy the rest of your day!"};
     static String[] randomResponse = {"I'm sorry, I didn't get that. ", "Pardon me, what did you say? ", "Sorry, could you repeat that? ", "Excuse me, could you clarify your response and try again? ", "I didn't quite get that, could you try again? "};
-    static String[] keywords = { "ramen", "bbq", "appetizers", "barbeque", "barbecue", "appetizer" }; // validate input for BBQ if barbecue typed
+    static String[] keywords = { "ramen", "bbq", "appetizers", "barbeque", "barbecue", "appetizer" };
     static Ramen[] ramenTypes = { new Ramen("tonkotsu",16, " rich and creamy pork bone broth with deep umami flavor, topped with tender chashu, green onions, and a marinated egg."), new Ramen("miso", 16, " hearty and slightly sweet broth made with fermented soybean paste, balanced with robust toppings like corn, bamboo shoots, and garlic."), new Ramen("seafood", 19, " delicate, ocean-inspired broth infused with the flavors of shrimp, fish, and seaweed, garnished with seafood toppings."), new Ramen("black garlic", 16, " bold, smoky broth enhanced with roasted black garlic oil, delivering a deep, aromatic flavor."), new Ramen("chicken", 16, " light and clean chicken-based broth, offering a comforting and mild taste with fresh vegetables and chicken slices."), new Ramen("veggie", 16, " plant-based broth brimming with earthy flavors, loaded with seasonal vegetables, tofu, and a hint of miso or soy sauce for depth.")};
     static BBQ[] bbqs = {new BBQ("chicken katsu",15, " crispy, golden-breaded chicken cutlets served with a tangy katsu sauce for a savory crunch in every bite."), new BBQ("teriyaki chicken", 15, " grilled chicken glazed in a sweet and savory teriyaki sauce, perfectly caramelized for a rich flavor."), new BBQ("hawaiian bbq chicken",15, " juicy, marinated chicken grilled to perfection with a touch of smoky island-inspired sweetness."), new BBQ("hawaiian bbq beef",16, " tender slices of marinated beef, grilled and infused with the bold, savory flavors of Hawaiian barbecue."), new BBQ("hawaiian bbq short rib", 17, " succulent, bone-in short ribs with a sweet and smoky glaze, charred to a delicious finish."), new BBQ("bbq chicken and beef",17, " a flavorful combo of grilled Hawaiian BBQ chicken and beef, offering the best of both worlds."), new BBQ("bbq chicken and chicken katsu",17, " satisfying pairing of crispy chicken katsu and juicy Hawaiian BBQ chicken, perfect for variety lovers."), new BBQ("hawaiian bbq trio",19, " hearty platter combining Hawaiian BBQ chicken, beef, and short rib, for the ultimate BBQ feast.")};
     static Appetizer[] appetizers = { new Appetizer("chicken kara-age", 11, " japanese style popcorn chicken with a side of spicy mayo."), new Appetizer("grill whole squid", 11, " whole squid sliced and generously sauced."), new Appetizer("gyoza", 8, " deep fried pork potstickers with a side of a soy vinegar and chili oil sauce."), new Appetizer("agedashi tofu", 8, "Drudged in sweet potato flour and fried. topped with bonito flakes (fish flakes). Accompanied by a side of Tempura Sauce."), new Appetizer("takoyaki", 10, " traditionally considered Japanese street food. Little leg of octopus, battered and fried into a ball, sauced, and topped with bonito flakes (fish flakes)."), new Appetizer("prawn tempura", 10, " Japanese stretched fried prawn. Accompanied by a side of Tempura Sauce."), new Appetizer("vegetable tempura", 10, " Japanese style assorted fried vegetables. Includes broccoli, zucchini,sweet potatoe, and onion. Accompanied by a side of Tempura Sauce."), new Appetizer("kaki fry", 9, " deep fried oysters with a side of spicy mayo."), new Appetizer("geso fry", 10, " fried squid legs with a side of spicy mayo."), new Appetizer("spam musubi", 8, " rice and spam wrapped tightly around with seaweed with sauce inside"), new Appetizer("lumpia", 8, " Filipino style mini egg rolls filled with pork and veggies. Comes with a side of sweet and sour sauce."), new Appetizer("crab rangoons",8, " deep fried wonton wrappers filled with cream cheese and imitation crab. Comes with a side of sweet and sour sauce"), new Appetizer("edamame", 8, " al dente boiled soy beans and salted."), new Appetizer("spicy cucumber salad", 8, " refreshing side dish featuring crisp cucumber slices tossed in a tangy, spicy dressing with hints of garlic and sesame. It's the perfect balance of heat and coolness, ideal for complementing any meal."), new Appetizer("white rice", 3, " every asian's favorite food.")};
@@ -240,7 +240,7 @@ public class Main {
                 }
                     System.out.println(" Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu. ");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
-                        userResp = in.nextLine();
+                        userResp = in.nextLine().toLowerCase();
                         if (userResp.contains("yes")) {
                             help("help");
                         }
@@ -273,7 +273,7 @@ public class Main {
                 }
                     System.out.println(" Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu. ");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
-                        userResp = in.nextLine();
+                        userResp = in.nextLine().toLowerCase();
                         if (userResp.contains("yes")) {
                             help("help");
                             break;
@@ -311,7 +311,7 @@ public class Main {
                 }
                 System.out.println(" Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu. ");
                 while (!userResp.contains("yes") && !userResp.contains("q")) {
-                    userResp = in.nextLine();
+                    userResp = in.nextLine().toLowerCase();
                     if (userResp.contains("yes")) {
                         help("help");
                         break;
@@ -366,7 +366,7 @@ public class Main {
                     }
                     System.out.println("Of course! Our " + ramenTypes[itemChecker].getName() + " ramen is a" + ramenTypes[itemChecker].getDescription() + " Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
-                        userResp = in.nextLine();
+                        userResp = in.nextLine().toLowerCase();
                         if (userResp.contains("yes")) {
                             help("help");
                             break;
@@ -403,7 +403,7 @@ public class Main {
                     }
                     System.out.println("Of course! Our " + bbqs[itemChecker].getName() + " ramen is a" + bbqs[itemChecker].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
-                        userResp = in.nextLine();
+                        userResp = in.nextLine().toLowerCase();
                         if (userResp.contains("yes")) {
                             help("help");
                             break;
@@ -440,7 +440,7 @@ public class Main {
                     }
                     System.out.println("Of course! Our " + appetizers[itemChecker].getName() + " ramen is a" + appetizers[itemChecker].getDescription() + "Is there any other dish you would like to know about? If yes, type 'yes', and if not, type 'q' to return to the main menu.");
                     while (!userResp.contains("yes") && !userResp.contains("q")) {
-                        userResp = in.nextLine();
+                        userResp = in.nextLine().toLowerCase();
                         if (userResp.contains("yes")) {
                             help("help");
                             break;
