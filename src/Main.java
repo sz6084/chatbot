@@ -490,7 +490,8 @@ public class Main {
             try {
                 Thread.sleep(delay); // Delay for specified milliseconds
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
+                System.out.println("Oops something went wrong.");
             }
         }
 
