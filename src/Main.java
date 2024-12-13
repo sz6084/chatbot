@@ -32,16 +32,16 @@ public class Main {
         if (food != -1) {
             println("Sure! We offer a variety of " + keywords[food] + ", including our top choices: ");
             if (keywords[food].equals("ramen")) {
-                for (Ramen item : ramenTypes) { // display out method
+                for (Ramen item : ramenTypes) {
                     println(item.getName() + ", ");
                 }
             } else if (keywords[food].equals("bbq") || keywords[food].equals("barbeque") || keywords[food].equals("barbecue")) {
                 for (BBQ item : bbqs) {
-                    println(item.getName() + ", ");
+                    System.out.print(item.getName() + ", ");
                 }
             } else if (keywords[food].equals("appetizers") || keywords[food].equals("appetizer")) {
                 for (Appetizer item : appetizers) {
-                    println(item.getName() + ", ");
+                    System.out.print(item.getName() + ", ");
                 }
             }
 
@@ -115,9 +115,9 @@ public class Main {
                     println(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
                         for (int i=0;i<bbqs.length;i++) {
                             if (i==bbqs.length-1) {
-                                println(bbqs[i].getName() + ".");
+                                System.out.print(bbqs[i].getName() + ".");
                             } else {
-                                println(bbqs[i].getName() + ", ");
+                                System.out.print(bbqs[i].getName() + ", ");
                             }
                         }
                 }
@@ -150,9 +150,9 @@ public class Main {
                     println(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
                     for (int i=0;i<appetizers.length;i++) {
                         if (i==appetizers.length-1) {
-                            println(appetizers[i].getName() + ".");
+                            System.out.print(appetizers[i].getName() + ".");
                         } else {
-                            println(appetizers[i].getName() + ", ");
+                            System.out.print(appetizers[i].getName() + ", ");
                         }
                     }
                 }
@@ -416,9 +416,9 @@ public class Main {
                         println(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
                         for (int i=0;i<bbqs.length;i++) {
                             if (i==bbqs.length-1) {
-                                println(bbqs[i].getName() + ".");
+                                System.out.print(bbqs[i].getName() + ".");
                             } else {
-                                println(bbqs[i].getName() + ", ");
+                                System.out.print(bbqs[i].getName() + ", ");
                             }
                         }
                         println("Or, type 'q' to go back to the main menu.");
@@ -457,9 +457,9 @@ public class Main {
                         println(getRandomResponse() + "Let me know if you are interested in any of the following dishes: ");
                         for (int i=0;i<appetizers.length;i++) {
                             if (i==appetizers.length-1) {
-                                println(appetizers[i].getName() + ".");
+                                System.out.print(appetizers[i].getName() + ".");
                             } else {
-                                println(appetizers[i].getName() + ", ");
+                                System.out.print(appetizers[i].getName() + ", ");
                             }
                         }
                         println("Or, type 'q' to head back to the main menu.");
